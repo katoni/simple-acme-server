@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  step:
+    container_name: ca.internal
+    image: katoni/simple-acme-server
+    build: .
+    secrets:
+      - password
+    environment:
+      PASSWORD_FILE: /run/secrets/password
+    volumes:
+      - step:/home/step
+    restart: unless-stopped
+
+volumes:
+  step:
+
+secrets:
+  password:
+    file: ./password.txt
+
+networks:
+  default:
+    name: ca
