@@ -1,4 +1,8 @@
-This Docker image is based on the awesome [smallstep/cli](https://github.com/smallstep/cli) and [smallstep/certificates](https://github.com/smallstep/certificates) by [smallstep](https://smallstep.com).
+<p align="center">
+<a href="https://hub.docker.com/r/katoni/simple-acme-server"><img src="https://img.shields.io/docker/pulls/katoni/simple-acme-server.svg" alt="Docker Pulls"></a>
+</p>
+
+This Docker image is based on the awesome [smallstep/cli](https://github.com/smallstep/cli) and [smallstep/certificates](https://github.com/smallstep/certificates) projects from [smallstep](https://smallstep.com).
 
 # Getting started
 ```
@@ -12,7 +16,7 @@ $ docker cp ca.internal:/home/step/certs/root_ca.crt .
 
 Install the Root CA into your Trusted Root Certification Authorities store.
 
-Containers in the same network now can access the ACME server: https://ca.internal/acme/development/directory.
+Containers in the same network can access the ACME server with this URL: https://ca.internal/acme/development/directory
 
 ## Access from another container
 
@@ -38,7 +42,7 @@ services:
 
 *Note: Docker Desktop (since version 1.12.1) [recognizes certs](https://docs.docker.com/docker-for-windows/faqs/#how-do-i-add-custom-ca-certificates) stored under Trust Root Certification Authorities or Intermediate Certification Authorities.
 However, there appears to be an issue ([docker/for-win#4804](https://github.com/docker/for-win/issues/4804)), so we have to manually mount the root CA.
-We use `LEGO_CA_CERTIFICATES` to configure lego to use our custom CA certificate.*
+Use `LEGO_CA_CERTIFICATES` to configure the lego client to use our custom CA certificate.*
 
 ## Credits
 
