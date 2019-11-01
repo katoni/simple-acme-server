@@ -5,6 +5,8 @@ FROM smallstep/step-cli:latest
 # We need root access to bind port 443
 USER root
 
+RUN apk --update --no-cache add jq
+
 ENV CONFIG_FILE="/home/step/config/ca.json"
 ENV PASSWORD_FILE="/home/step/secrets/password"
 
